@@ -38,6 +38,10 @@ public class CafeKiosk {
 	public void clear() {
 		beverages.clear();
 	}
+	
+	public int calculateTotalPrice() {
+		return 0;
+	}
 
 	public Order createOrder() {
 		LocalDateTime currentDateTime = LocalDateTime.now();
