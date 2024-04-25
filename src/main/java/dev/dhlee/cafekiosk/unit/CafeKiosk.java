@@ -21,9 +21,13 @@ public class CafeKiosk {
 		beverages.remove(beverage);
 	}
 
+	public void clear() {
+		beverages.clear();
+	}
+
 	public int calculateTotalPrice() {
 		return beverages.stream()
-			.mapToInt(beverage -> beverage.getPrice())
+			.mapToInt(Beverage::getPrice)
 			.sum();
 	}
 
