@@ -7,6 +7,7 @@ import org.junit.jupiter.api.Test;
 
 import dev.dhlee.cafekiosk.unit.beverages.Americano;
 import dev.dhlee.cafekiosk.unit.beverages.Latte;
+import dev.dhlee.cafekiosk.unit.order.Order;
 
 class CafeKioskTest {
 
@@ -75,5 +76,18 @@ class CafeKioskTest {
 
 		cafeKiosk.clear();
 		assertThat(cafeKiosk.getBeverages()).isEmpty();
+	}
+
+	@Test
+	void createOrder() {
+		CafeKiosk cafeKiosk = new CafeKiosk();
+		Americano americano = new Americano();
+
+		cafeKiosk.add(americano);
+
+		Order order = cafeKiosk.createOrder();
+		assertThat(order).isNotNull();
+		assertThat(order.beverages()).hasSize(1);
+		assertThat(order.beverages().get(0)).isEqualTo(americano);
 	}
 }
