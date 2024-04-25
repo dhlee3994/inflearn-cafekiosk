@@ -1,7 +1,10 @@
 package dev.dhlee.cafekiosk.unit;
 
+import java.time.LocalDateTime;
+
 import dev.dhlee.cafekiosk.unit.beverages.Americano;
 import dev.dhlee.cafekiosk.unit.beverages.Latte;
+import dev.dhlee.cafekiosk.unit.order.Order;
 
 public class CafeKioskRunner {
 
@@ -16,5 +19,7 @@ public class CafeKioskRunner {
 
 		int totalPrice = cafeKiosk.calculateTotalPrice();
 		System.out.println("총 주문가격: " + totalPrice);
+
+		Order order = cafeKiosk.createOrder(LocalDateTime.now());
 	}
 }
