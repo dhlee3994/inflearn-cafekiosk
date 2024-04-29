@@ -18,7 +18,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.ActiveProfiles;
 
-import dev.dhlee.cafekiosk.spring.api.controller.order.request.OrderCreateRequest;
+import dev.dhlee.cafekiosk.spring.api.service.order.request.OrderCreateServiceRequest;
 import dev.dhlee.cafekiosk.spring.api.service.order.response.OrderResponse;
 import dev.dhlee.cafekiosk.spring.domain.order.OrderRepository;
 import dev.dhlee.cafekiosk.spring.domain.orderproduct.OrderProductRepository;
@@ -66,8 +66,8 @@ class OrderServiceTest {
 		Product product3 = createProduct(HANDMADE, "003", 5000);
 		productRepository.saveAll(List.of(product1, product2, product3));
 
-		OrderCreateRequest createRequest =
-			OrderCreateRequest.builder()
+		OrderCreateServiceRequest createRequest =
+			OrderCreateServiceRequest.builder()
 				.productNumbers(List.of("001", "002"))
 				.build();
 
@@ -103,8 +103,8 @@ class OrderServiceTest {
 		Stock stock2 = Stock.create("002", 2);
 		stockRepository.saveAll(List.of(stock1, stock2));
 
-		OrderCreateRequest createRequest =
-			OrderCreateRequest.builder()
+		OrderCreateServiceRequest createRequest =
+			OrderCreateServiceRequest.builder()
 				.productNumbers(List.of("001", "001", "002", "003"))
 				.build();
 
@@ -150,8 +150,8 @@ class OrderServiceTest {
 		Stock stock2 = Stock.create("002", 2);
 		stockRepository.saveAll(List.of(stock1, stock2));
 
-		OrderCreateRequest createRequest =
-			OrderCreateRequest.builder()
+		OrderCreateServiceRequest createRequest =
+			OrderCreateServiceRequest.builder()
 				.productNumbers(List.of("001", "001", "002", "003"))
 				.build();
 
@@ -163,7 +163,7 @@ class OrderServiceTest {
 
 	@DisplayName("중복되는 상품번호 리스트로 주문을 생성할 수 있다.")
 	@Test
-	void createOrderWithDuplicateProductNubmers() {
+	void createOrderWithDuplicateProductNumbers() {
 		// given
 		LocalDateTime registeredAt = LocalDateTime.now();
 
@@ -172,8 +172,8 @@ class OrderServiceTest {
 		Product product3 = createProduct(HANDMADE, "003", 5000);
 		productRepository.saveAll(List.of(product1, product2, product3));
 
-		OrderCreateRequest createRequest =
-			OrderCreateRequest.builder()
+		OrderCreateServiceRequest createRequest =
+			OrderCreateServiceRequest.builder()
 				.productNumbers(List.of("001", "001"))
 				.build();
 

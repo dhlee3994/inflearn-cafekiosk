@@ -14,7 +14,7 @@ import java.util.function.Function;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import dev.dhlee.cafekiosk.spring.api.controller.order.request.OrderCreateRequest;
+import dev.dhlee.cafekiosk.spring.api.service.order.request.OrderCreateServiceRequest;
 import dev.dhlee.cafekiosk.spring.api.service.order.response.OrderResponse;
 import dev.dhlee.cafekiosk.spring.domain.order.Order;
 import dev.dhlee.cafekiosk.spring.domain.order.OrderRepository;
@@ -34,7 +34,7 @@ public class OrderService {
 	private final OrderRepository orderRepository;
 	private final StockRepository stockRepository;
 
-	public OrderResponse createOrder(OrderCreateRequest createRequest, LocalDateTime registeredAt) {
+	public OrderResponse createOrder(OrderCreateServiceRequest createRequest, LocalDateTime registeredAt) {
 		List<String> productNumbers = createRequest.getProductNumbers();
 		List<Product> products = findProductsBy(productNumbers);
 
